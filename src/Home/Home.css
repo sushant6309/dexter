@@ -1,0 +1,28 @@
+.my-container {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../assests/imgs/bg1.png');
+}
+
+.drop-zone section{
+    width: 100%;
+    float: left;
+    background-color: white;
+    padding: 10px;
+}
+
+.p-40 {
+    padding: 40px;
+}
+.p-t-10 {
+    padding-top: 10px
+}
+
+.reset-row{
+    color: white;
+}
