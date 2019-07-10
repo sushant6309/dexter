@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Toast from 'react-bootstrap/Toast';
 import {withRouter} from 'react-router'
+import axios from 'axios';
 
 import './Home.css';
 
@@ -40,12 +41,23 @@ class Home extends React.Component {
                             <div className="drop-zone">
                                 <Dropzone onDrop={
                                     acceptedFiles => {
+                                        const formData = new FormData();
+                                        formData.append('file', acceptedFiles[0]);
+                                        axios.post(`/test-upload`, formData, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                        }).then(response => {
+                                            this.setState({showToast: true}, () => {
+                                                setTimeout(()=> {
+                                                    this.setState({showToast: false})
+                                                }, 2000);
+                                            })
+                                        // handle your response;
+                                        }).catch(error => {
+                                        // handle your error
+                                        });
                                         console.log(acceptedFiles);
-                                        this.setState({showToast: true}, () => {
-                                            setTimeout(()=> {
-                                                this.setState({showToast: false})
-                                            }, 2000);
-                                        })
                                     }} className="drop-zone">
                                     {({getRootProps, getInputProps}) => (
                                     <section>
